@@ -45,10 +45,11 @@ class TasksController extends Controller
     {
         $request->validate([
             'status' => 'required|max:10',
-            
+        ]); 
+        
         $task = new Task;
-        $task->content = $request->content;
-        $task->status= $request->status; 
+        $task->status = $task->status; 
+        $task->content = $task->content;
         $task->save();
         
         return redirect('/');
@@ -95,7 +96,8 @@ class TasksController extends Controller
     {
         $request->validate([
             'status' => 'required|max:10',
-            
+        ]);
+        
         $task = Task::findOrFail($id);
         
         $task->content = $request->content;
